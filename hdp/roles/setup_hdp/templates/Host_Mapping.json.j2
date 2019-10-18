@@ -1,0 +1,49 @@
+{
+        "blueprint" : "HDP",
+        "default_password" : "Hadoop@123",
+        "configurations" : [
+    {
+      "hive-site" : {
+        "properties" : {
+          "javax.jdo.option.ConnectionURL": "jdbc:postgresql://{{groups["master_nodes"][0]}}:5432/hive",
+          "javax.jdo.option.ConnectionPassword" : "{{ hive_passwd }}"
+        }
+      }
+    },
+    {
+      "oozie-site" : {
+        "properties" : {
+          "oozie.service.JPAService.jdbc.password" : "{{ oozie_passwd }}"        
+         }
+      }
+    },
+    {
+      "admin-properties" : {
+        "properties" : {
+          "db_password" : "{{ ranger_passwd }}"        
+         }
+      }
+    }],
+        "host_groups" :[
+                {
+                          "name" : "host_group_1",
+                          "hosts" : [{ "fqdn" : "{{ groups["master_nodes"][0] }}" }]
+                },
+                {
+                          "name" : "host_group_2",
+                          "hosts" : [{ "fqdn" :  "{{ groups["master_nodes"][1] }}" }]
+                },
+                {
+                          "name" : "host_group_3",
+                          "hosts" : [{ "fqdn" : "{{ groups["slave_nodes"][0] }}" }]
+                },
+                {
+                          "name" : "host_group_4",
+                          "hosts" : [{ "fqdn" : "{{ groups["slave_nodes"][1] }}" }]
+                },
+                {
+                          "name" : "host_group_5",
+                          "hosts" : [{ "fqdn" : "{{ groups["slave_nodes"][2] }}" }]
+                }
+        ]
+}
