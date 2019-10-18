@@ -5,9 +5,10 @@ You need to update two files:
 1. host.ini
 2. Ansible.cfg
 
-## Update the hostname accordingly into host.ini
+### Update the hostname accordingly into host.ini
 
-## Update the username in Ansible.cfg
+### Update the username in Ansible.cfg
 `replace centos to your user`
+`update pem key if login is using pem`
 
 ## Update validate the repos as well
