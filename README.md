@@ -1,1 +1,1 @@
-# ansible_hdp_deployment
+# HDP Deployment using ansible script
